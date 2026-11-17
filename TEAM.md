@@ -13,7 +13,7 @@
 | --: | ------ | ---- | ----- | ------ | ------- |
 |   1 |    Nguyễn Quốc Toàn    |   2A202604098   |   nguyenquoctoan0310@gmail.com    |     nguyenquoctoan0310   | Lead/integration; shape A `workflow`; crash suite; benchmark; ADR; ablation + research card; group report |
 |   2 | Vũ Trọng Thắng | 2A202604022 |       | Thangvipsv4 | Shape B `single` (ReAct); test single; research card (góp ý) |
-|   3 |        |      |       | phamhanam | Shape C `orchestrator` + handoff; rà trace/secret; group report + research card |
+|   3 | Phạm Hà Nam       | 2A202604023     |       | phamhanam | Shape C `orchestrator` + handoff; rà trace/secret; group report + research card |
 
 ## Phân công
 
