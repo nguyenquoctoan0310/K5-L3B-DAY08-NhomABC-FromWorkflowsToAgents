@@ -1,0 +1,222 @@
+{
+  "run_id": "B7-grader-audit-5fd46fdca677",
+  "fixtures_sha256_12": "5fd46fdca677",
+  "relations": [
+    "R1_delay_days_2_vs_3",
+    "R2_infra_invariance",
+    "R3_duplicate_scaling",
+    "R4_permutation"
+  ],
+  "matrix": {
+    "grader_a": {
+      "R1_delay_days_2_vs_3": {
+        "holds": true,
+        "deviations": []
+      },
+      "R2_infra_invariance": {
+        "holds": true,
+        "deviations": []
+      },
+      "R3_duplicate_scaling": {
+        "holds": false,
+        "deviations": [
+          {
+            "key": "workflow.pass_5",
+            "expected": 0.6666666666666666,
+            "got": 0.0
+          },
+          {
+            "key": "workflow.cost_per_success_vnd",
+            "expected": 31.5,
+            "got": 26.27777777777778
+          },
+          {
+            "key": "workflow.total_simulated_cost_vnd",
+            "expected": 567.0,
+            "got": 473.0
+          }
+        ]
+      },
+      "R4_permutation": {
+        "holds": false,
+        "deviations": [
+          {
+            "key": "order0.workflow.cost_per_success_vnd",
+            "expected": 31.5,
+            "got": 31.666666666666668
+          },
+          {
+            "key": "order0.workflow.total_simulated_cost_vnd",
+            "expected": 283.5,
+            "got": 285.0
+          },
+          {
+            "key": "order1.workflow.cost_per_success_vnd",
+            "expected": 31.5,
+            "got": 31.666666666666668
+          },
+          {
+            "key": "order1.workflow.total_simulated_cost_vnd",
+            "expected": 283.5,
+            "got": 285.0
+          },
+          {
+            "key": "order2.workflow.cost_per_success_vnd",
+            "expected": 31.5,
+            "got": 31.555555555555557
+          },
+          {
+            "key": "order2.workflow.total_simulated_cost_vnd",
+            "expected": 283.5,
+            "got": 284.0
+          },
+          {
+            "key": "order5.workflow.cost_per_success_vnd",
+            "expected": 31.5,
+            "got": 31.61111111111111
+          },
+          {
+            "key": "order5.workflow.total_simulated_cost_vnd",
+            "expected": 283.5,
+            "got": 284.5
+          }
+        ]
+      }
+    },
+    "grader_b": {
+      "R1_delay_days_2_vs_3": {
+        "holds": true,
+        "deviations": []
+      },
+      "R2_infra_invariance": {
+        "holds": true,
+        "deviations": []
+      },
+      "R3_duplicate_scaling": {
+        "holds": false,
+        "deviations": [
+          {
+            "key": "workflow.pass_5",
+            "expected": 0.6666666666666666,
+            "got": 0.0
+          }
+        ]
+      },
+      "R4_permutation": {
+        "holds": true,
+        "deviations": []
+      }
+    },
+    "grader_c": {
+      "R1_delay_days_2_vs_3": {
+        "holds": true,
+        "deviations": []
+      },
+      "R2_infra_invariance": {
+        "holds": false,
+        "deviations": [
+          {
+            "key": "workflow.pass_rate",
+            "expected": 0.75,
+            "got": 0.5625
+          },
+          {
+            "key": "workflow.pass_5",
+            "expected": 0.6666666666666666,
+            "got": 0.5
+          },
+          {
+            "key": "workflow.seed_variance",
+            "expected": 0.006944444444444451,
+            "got": 0.00390625
+          },
+          {
+            "key": "workflow.seed_min",
+            "expected": 0.6666666666666666,
+            "got": 0.5
+          },
+          {
+            "key": "workflow.seed_max",
+            "expected": 0.8333333333333334,
+            "got": 0.625
+          },
+          {
+            "key": "workflow.cost_per_success_vnd",
+            "expected": 21.055555555555557,
+            "got": 23.72222222222222
+          },
+          {
+            "key": "workflow.mean_steps",
+            "expected": 4.25,
+            "got": 3.4375
+          },
+          {
+            "key": "workflow.mean_model_calls",
+            "expected": 2.0,
+            "got": 1.75
+          },
+          {
+            "key": "workflow.mean_tool_calls",
+            "expected": 5.0,
+            "got": 4.0
+          },
+          {
+            "key": "workflow.graded_trials",
+            "expected": 12,
+            "got": 16
+          },
+          {
+            "key": "workflow.total_simulated_cost_vnd",
+            "expected": 189.5,
+            "got": 213.5
+          },
+          {
+            "key": "workflow.seed_pass_rates",
+            "expected": {
+              "11": 0.8333333333333334,
+              "22": 0.6666666666666666
+            },
+            "got": {
+              "11": 0.625,
+              "22": 0.5
+            }
+          }
+        ]
+      },
+      "R3_duplicate_scaling": {
+        "holds": false,
+        "deviations": [
+          {
+            "key": "workflow.pass_5",
+            "expected": 0.6666666666666666,
+            "got": 0.0
+          }
+        ]
+      },
+      "R4_permutation": {
+        "holds": true,
+        "deviations": []
+      }
+    }
+  },
+  "summary": {
+    "grader_a": {
+      "R1_delay_days_2_vs_3": "holds",
+      "R2_infra_invariance": "holds",
+      "R3_duplicate_scaling": "deviates x3",
+      "R4_permutation": "deviates x8"
+    },
+    "grader_b": {
+      "R1_delay_days_2_vs_3": "holds",
+      "R2_infra_invariance": "holds",
+      "R3_duplicate_scaling": "deviates x1",
+      "R4_permutation": "holds"
+    },
+    "grader_c": {
+      "R1_delay_days_2_vs_3": "holds",
+      "R2_infra_invariance": "deviates x12",
+      "R3_duplicate_scaling": "deviates x1",
+      "R4_permutation": "holds"
+    }
+  }
+}
