@@ -1,1 +1,1 @@
-"""Team bonus code (B7 — grader audit). Graded from this folder only."""
+"""Team extra variants run via --extra-shape (research-card ablation only; no bonus topic)."""
