@@ -52,7 +52,7 @@ Bộ public, 14 claim × seed `11,22,33,44,55` (70 trial mỗi shape), từ `src
 - Crash safety: `20/20` (`src/reports/crash.json`). T11 (gọi lại) và T12 (crash rồi resume) xanh trên cả ba shape nhóm viết; ma trận student 248 passed.
 - Quét toàn bộ trace của 4 shape trong `src/traces/` không thấy `CANARY_SECRET_*`, `CANARY_INTERNAL_*`, SĐT, địa chỉ hay tên hàng.
 - Ablation (research card): bỏ bước MockLLM draft của workflow giữ pass 1.000, cost/success 28.86 → 27.86 (`src/reports/bonus_ablation_nodraft.json`).
-- Tự kiểm trên `student_drop/`: chưa chạy vì nhóm chưa nhận thư mục này (lệnh ở `src/README.md`, mục Tự kiểm trên bộ hidden).
+- Tự kiểm trên `student_drop/` (40 claim × 5 seed, không nhãn nên không có pass rate; `src/reports/hidden_selfcheck.json`): workflow, single, orchestrator đều chạy hết 200/200 trial, `error_trials = 0`, `leak_suspect_trials = 0`. Ba shape cho cùng một phân bố status (denied 95, resolved 90, escalated 10, needs_info 5) và trùng status trên từng cặp claim–seed. Chi phí mô phỏng tổng: workflow 6000.5, single 10167.0, orchestrator 11865.9 VND; tool call/trial 2.90 / 4.75 / 5.83.
 
 Quyết định kiến trúc và lý do: xem `report/team/decision_adr.md`. Phiếu nghiên cứu và ablation: xem `report/team/research_card.md`.
 
@@ -71,7 +71,7 @@ Chi tiết đóng góp của từng thành viên nằm trong `TEAM.md` (bảng �
 MockLLM không phải model sản xuất; latency là `unavailable`. Ngoài ra:
 
 - Variance 0 của ba shape nhóm viết đến từ code tất định, không chứng minh độ ổn định của một LLM thật; với model thật, shape B và C có thể dao động theo seed như swarm.
-- Corpus public chỉ 14 claim. Kết quả trên 40 claim hidden do giảng viên chấm; nhóm chưa có số đó.
+- Corpus public chỉ 14 claim. Trên 40 claim hidden nhóm chỉ tự kiểm được status/lỗi/leak (không có nhãn); pass rate chính thức do grader của giảng viên chấm.
 - Chi phí là VND mô phỏng, chủ yếu đến từ tool call (10 VND/lần), nên thứ hạng cost/success nhạy với bảng giá: nếu tool call rẻ hơn nhiều so với token, khoảng cách giữa workflow và orchestrator sẽ thu hẹp.
 - Kết luận "workflow đủ tốt" sẽ đổi nếu ticket là văn bản tự do mà luật cố định không trích được dữ kiện, nếu cần tra nhiều nguồn độc lập song song, hoặc nếu hidden cho thấy workflow fail một nhóm claim mà shape khác xử lý được với leak/bypass vẫn bằng 0.
 - Hướng cải thiện: chạy B1 (investigator song song + mô hình latency) để đo critical path thay vì chỉ cost; thêm claim đối kháng tự viết nhãn tay.
