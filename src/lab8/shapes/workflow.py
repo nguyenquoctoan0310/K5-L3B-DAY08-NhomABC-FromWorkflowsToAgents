@@ -66,19 +66,28 @@ def run_claim(
         conn.close()
 
 
-def _run(conn: sqlite3.Connection, claim_id: str, *, seed: int, crash_at: str | None) -> RunResult:
+def _run(
+    conn: sqlite3.Connection,
+    claim_id: str,
+    *,
+    seed: int,
+    crash_at: str | None,
+    shape: str = SHAPE,
+    draft: bool = True,
+) -> RunResult:
+    """`shape` and `draft` exist only for the ablation in src/bonus/; run_claim uses the defaults."""
     budget = Budget()
-    trace = Trace(make_run_id(SHAPE, claim_id, seed))
+    trace = Trace(make_run_id(shape, claim_id, seed))
 
     def done(status: str, proposal: int, reason: str | None) -> RunResult:
         trace.add("decision", {"status": status, "proposal_amount": int(proposal), "reason": reason})
-        if status != "failed" or reason != "unknown_claim":
+        if draft and (status != "failed" or reason != "unknown_claim"):
             # Draft only after the decision is fixed; the text never feeds back.
             complete(budget, seed=seed, purpose="draft", prompt=f"status={status} amount={int(proposal)}")
             trace.add("draft", {"purpose": "draft"})
         return finish(
             conn,
-            shape=SHAPE,
+            shape=shape,
             claim_id=claim_id,
             seed=seed,
             status=status,
