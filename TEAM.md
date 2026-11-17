@@ -11,9 +11,15 @@
 
 | STT | Họ tên | MSSV | Email | GitHub | Vai trò |
 | --: | ------ | ---- | ----- | ------ | ------- |
+<<<<<<< Updated upstream
 |   1 |    Nguyễn Quốc Toàn    |   2A202604098   |   nguyenquoctoan0310@gmail.com    |     nguyenquoctoan0310   | integration; shape A `workflow`; ledger + crash suite; benchmark; ADR |
 |   2 |        |      |       |        | Shape B `single` (ReAct); bonus B7 (kiểm toán grader) |
 |   3 |        |      |       |        | Shape C `orchestrator` + handoff; rà trace/secret; group report + research card |
+=======
+|   1 |    Nguyễn Quốc Toàn    |   2A202604098   |   nguyenquoctoan0310@gmail.com    |     nguyenquoctoan0310   | Lead/integration; shape A `workflow`; crash suite; benchmark; ADR; ablation + research card; group report |
+|   2 | Vũ Trọng Thắng | 2A202604022 |       | Thangvipsv4 | Shape B `single` (ReAct); test single; research card (góp ý) |
+|   3 | Phạm Hà Nam       | 2A202604023     |       | phamhanam | Shape C `orchestrator` + handoff; rà trace/secret; group report + research card |
+>>>>>>> Stashed changes
 
 ## Phân công
 
