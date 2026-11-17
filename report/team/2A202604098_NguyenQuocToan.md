@@ -44,4 +44,9 @@
 
 ## 6. Tự đánh giá
 
-(Tự viết.)
+- **Mức độ hoàn thành công việc:** 100%. Các phần được phân công đều đã xong:
+  - Shape A `workflow`: pass 1.000, pass^5 1.000 trên bộ public, cost/success 28.86 VND; 25 test trong `src/tests/test_team_workflow.py`.
+  - Crash suite `20/20` (`src/reports/crash.json`); benchmark 4 shape × 5 seed (`src/reports/benchmark.json`).
+  - Tự kiểm hidden: workflow chạy 200/200 trial, 0 lỗi, 0 trial nghi lộ secret (`src/reports/hidden_selfcheck.json`).
+  - Ablation `workflow_nodraft` và research card; ADR, group report.
+  - integration: tạo repo, chia việc trong `TEAM.md`, merge các nhánh.
