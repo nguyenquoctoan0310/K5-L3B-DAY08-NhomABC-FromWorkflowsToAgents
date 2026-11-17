@@ -11,13 +11,13 @@
 
 | STT | Họ tên | MSSV | Email | GitHub | Vai trò |
 | --: | ------ | ---- | ----- | ------ | ------- |
-|   1 |    Nguyễn Quốc Toàn    |   2A202604098   |   nguyenquoctoan0310@gmail.com    |     nguyenquoctoan0310   | Lead/integration; shape A `workflow`; crash suite; benchmark; ADR; bonus B7; research card; group report |
+|   1 |    Nguyễn Quốc Toàn    |   2A202604098   |   nguyenquoctoan0310@gmail.com    |     nguyenquoctoan0310   | Lead/integration; shape A `workflow`; crash suite; benchmark; ADR; ablation + research card; group report |
 |   2 | Vũ Trọng Thắng | 2A202604022 |       | Thangvipsv4 | Shape B `single` (ReAct); test single; research card (góp ý) |
 |   3 |        |      |       | phamhanam | Shape C `orchestrator` + handoff; rà trace/secret; group report + research card |
 
 ## Phân công
 
-Shape nhóm chọn để chấm hidden: `workflow` (ít tự chủ nhất, tất định theo seed). Bonus: **B7 — kiểm toán grader**.
+Shape nhóm chọn để chấm hidden: `workflow` (ít tự chủ nhất, tất định theo seed). Nhóm không làm bonus.
 
 ### TV1 — Lead / integration, workflow, durability
 
@@ -28,7 +28,7 @@ Shape nhóm chọn để chấm hidden: `workflow` (ít tự chủ nhất, tất
 | CP3 | Truyền `crash_at`, không bắt `InjectedCrash`; T11, T12 xanh | `workflow.py` |
 | CP4 | Chạy crash suite `20/20`, rà approval hỏng / sai claim / đơn đã hoàn đủ | `src/reports/crash.json` |
 | CP5 | Chạy benchmark 4 shape × 5 seed, tự kiểm `student_drop/`, điền ADR (commit hash, run id, số liệu), chạy `check_submission` ra `0 FAIL`, push | `src/reports/benchmark.json`, `report/team/decision_adr.md` |
-| Bonus | B7 kiểm toán grader (nhận lại từ TV2), ablation `workflow_nodraft`, research card, group report | `src/bonus/`, `src/tests/test_bonus_grader_audit.py`, `report/team/bonus_report.md`, `report/team/research_card.md`, `report/team/group_report.md` |
+| Ablation + báo cáo | Ablation `workflow_nodraft`, research card, group report | `src/bonus/ablation_workflow_nodraft.py`, `report/team/research_card.md`, `report/team/group_report.md` |
 | Test | Test workflow: đơn đã hoàn một phần (kiểu T14) và đơn đã hoàn đủ (kiểu T13) | `src/tests/test_team_workflow.py` |
 | Báo cáo | Mục 4 "Kết quả" của group report; báo cáo cá nhân | `report/team/group_report.md`, `report/team/<MSSV>_<HoTen>.md` |
 
@@ -66,7 +66,7 @@ Shape nhóm chọn để chấm hidden: `workflow` (ít tự chủ nhất, tất
 
 | Người | Vai | Commit | Test đã thêm hoặc sửa |
 | --- | --- | --- | --- |
-| Nguyễn Quốc Toàn (nguyenquoctoan0310) | TV1 — Lead, shape A `workflow`, crash, benchmark, ADR, bonus B7, research card, group report | `cc91a28` (workflow + test), `2de95d8` (crash report), `0dbd5b9` (bonus B7, ablation, benchmark) | `src/tests/test_team_workflow.py`, `src/tests/test_bonus_grader_audit.py` |
+| Nguyễn Quốc Toàn (nguyenquoctoan0310) | TV1 — Lead, shape A `workflow`, crash, benchmark, ADR, ablation, research card, group report | `cc91a28` (workflow + test), `2de95d8` (crash report), `0dbd5b9` (ablation, benchmark) | `src/tests/test_team_workflow.py` |
 | Vũ Trọng Thắng (Thangvipsv4) | TV2 — shape B `single` | `7df5fc0` (single) | `src/tests/test_team_single.py` (nháp do TV1 commit trong `0dbd5b9`; TV2 cần tự commit một test) |
 | phamhanam | TV3 — shape C `orchestrator`, handoff, trace | `dc80197` (orchestrator), `2a7c349` (test), `3a41839` (trace/secret audit) | `src/tests/test_orchestrator_safety.py` |
 

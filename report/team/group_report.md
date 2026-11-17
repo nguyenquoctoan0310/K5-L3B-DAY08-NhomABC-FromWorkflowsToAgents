@@ -17,9 +17,9 @@ Chia việc (chi tiết ở `TEAM.md`, mục Phân công):
 - TV1: shape A `workflow` (viết trước để làm khuôn), crash suite, benchmark, ADR, tích hợp và nộp bài.
 - TV2: shape B `single` (ReAct có giới hạn 8 bước).
 - TV3: shape C `orchestrator` + handoff, rà trace/secret.
-- Bonus B7 (kiểm toán grader), research card và báo cáo được làm sau khi ba shape đã merge.
+- Ablation, research card và báo cáo được làm sau khi ba shape đã merge. 
 
-Thứ tự: đọc contract và `swarm_reference.py` (CP1) → ba shape làm song song trên ba nhánh riêng, mỗi shape tự qua 62 test student (CP2–CP3) → merge vào `main`, chạy crash suite, benchmark 4 shape × 5 seed (CP4–CP5) → ADR, research card, bonus.
+Thứ tự: đọc contract và `swarm_reference.py` (CP1) → ba shape làm song song trên ba nhánh riêng, mỗi shape tự qua 62 test student (CP2–CP3) → merge vào `main`, chạy crash suite, benchmark 4 shape × 5 seed (CP4–CP5) → ADR, research card, ablation.
 
 ## 3. Giải pháp
 
@@ -35,7 +35,7 @@ Handoff được sanitize bằng allowlist của `lab8.handoff` (không bằng t
 
 Trace (`lab8.trace.Trace`, file `src/traces/<run_id>.json`): workflow ghi `claim` (claim_id, found, has_order_id), `lookup_order` (chỉ ORDER_FIELDS), `quote`, `issue_refund` (ok, reason, conflict), `decision`, `draft`, `crash`. Cố ý không ghi: nội dung ticket, `principal_id`, `parent_secret`, `raw_headers`, SĐT, địa chỉ, tên hàng, internal note, chữ MockLLM sinh ra. Không shape nào in ra stdout.
 
-Test nhóm thêm (chạy trong cổng `python -m pytest -q`): `tests/test_team_workflow.py` (T13/T14, approval của claim khác, crash–resume qua shape, seed-invariance, quét secret/PII/ticket trên cả 14 claim), `tests/test_orchestrator_safety.py` (allowlist handoff, worker không gọi được tool ghi, trace orchestrator đúng contract và sạch), `tests/test_bonus_grader_audit.py` (B7).
+Test nhóm thêm (chạy trong cổng `python -m pytest -q`): `tests/test_team_workflow.py` (T13/T14, approval của claim khác, crash–resume qua shape, seed-invariance, quét secret/PII/ticket trên cả 14 claim), `tests/test_orchestrator_safety.py` (allowlist handoff, worker không gọi được tool ghi, trace orchestrator đúng contract và sạch), `tests/test_team_single.py` (giới hạn 8 bước, không tin delay trong ticket, chống prompt injection, quote đầy đủ, trace sạch).
 
 ## 4. Kết quả
 
@@ -61,8 +61,6 @@ Quyết định kiến trúc và lý do: xem `report/team/decision_adr.md`. Phi�
 - **`run_react` không giữ lịch sử quan sát.** Sau mỗi tool, observation chỉ còn `last_tool`/`last_result`, nên `decide` ngây thơ sẽ quên order đã đọc. Shape B lưu kết quả từng tool vào một dict `state` trong closure.
 - **Mạng chập chờn khi tích hợp.** `git pull` báo `Failed to connect to github.com port 443`; nhóm dùng bản `origin/main` đã `git fetch` trước đó và `git merge --ff-only origin/main`, sau đó chạy lại toàn bộ test và benchmark trên `main`.
 - **Thứ tự commit hash.** `check_submission` cảnh báo khi còn thay đổi chưa commit; nhóm commit `src/reports/` trước, lấy `git rev-parse --short HEAD` rồi mới ghi hash vào ADR.
-- **Checker chưa nhận B7.** `lab8.check_submission` chỉ chấp nhận tiêu đề `Bonus report: B1`–`B6`, trong khi `docs/bonus_topics.md` có B7. Nhóm giữ tiêu đề đúng là B7 và báo giảng viên thay vì đổi nhãn cho qua checker.
-- **Lỗi thước đo phát hiện khi làm B7.** `lab8.metrics.summarize` tính pass^5 theo số dòng mỗi claim chứ không theo số seed phân biệt, nên một trial bị ghi hai lần làm pass^5 rơi về 0. Không ảnh hưởng benchmark của nhóm (đúng 1 trial mỗi claim × seed); nhóm không sửa `metrics.py` vì đó là file thước đo, chỉ ghi lại trong `report/team/bonus_report.md`.
 
 ## 6. Tổng hợp đóng góp
 
